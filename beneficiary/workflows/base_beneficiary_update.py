@@ -1,8 +1,8 @@
 import logging
 
 from core.models import User
-from social_protection.workflows.utils import DataUpdateWorkflow
-from social_protection.services import BeneficiaryImportService
+from beneficiary.workflows.utils import DataUpdateWorkflow
+from beneficiary.services import BeneficiaryImportService
 from social_protection.models import BenefitPlan
 
 logger = logging.getLogger(__name__)
@@ -70,7 +70,7 @@ BEGIN
         FROM individual_individualdatasource
         WHERE upload_id = current_upload_id
     ) AS f
-    WHERE not beneficiary_uuid in (select "UUID" from social_protection_beneficiary spb where benefit_plan_id = benefitPlan);
+    WHERE not beneficiary_uuid in (select "UUID" from beneficiary_beneficiary spb where benefit_plan_id = benefitPlan);
 
     IF failing_entries_invalid_id IS NOT NULL THEN
         UPDATE individual_individualdatasourceupload
@@ -87,16 +87,16 @@ BEGIN
     -- If no invalid entries, then proceed with the data manipulation
     ELSE
         begin 
-            -- Update social_protection_beneficiary
+            -- Update beneficiary_beneficiary
           with updated_beneficiaries as (
-          update  social_protection_beneficiary
-      set "Json_ext" = social_protection_beneficiary."Json_ext" || filter_jsonb(ids."Json_ext", json_schema -> 'properties') - 'first_name' - 'last_name' - 'dob', "DateUpdated" = NOW()
+          update  beneficiary_beneficiary
+      set "Json_ext" = beneficiary_beneficiary."Json_ext" || filter_jsonb(ids."Json_ext", json_schema -> 'properties') - 'first_name' - 'last_name' - 'dob', "DateUpdated" = NOW()
             FROM individual_individualdatasource ids
         WHERE upload_id=current_upload_id 
-          and social_protection_beneficiary."UUID" = (ids."Json_ext" ->> 'ID')::UUID
-          and social_protection_beneficiary."isDeleted"=false
+          and beneficiary_beneficiary."UUID" = (ids."Json_ext" ->> 'ID')::UUID
+          and beneficiary_beneficiary."isDeleted"=false
 
-        RETURNING social_protection_beneficiary."UUID", ids."Json_ext", social_protection_beneficiary."individual_id", ids."UUID" as individualdatasource_id
+        RETURNING beneficiary_beneficiary."UUID", ids."Json_ext", beneficiary_beneficiary."individual_id", ids."UUID" as individualdatasource_id
           ),
           updated_individuals as ( UPDATE individual_individual
             SET first_name = COALESCE(f."Json_ext"->>'first_name', first_name),

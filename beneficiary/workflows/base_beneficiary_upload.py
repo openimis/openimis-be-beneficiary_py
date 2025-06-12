@@ -1,8 +1,8 @@
 import logging
 
 from core.models import User
-from social_protection.workflows.utils import DataUploadWorkflow
-from social_protection.services import BeneficiaryImportService
+from beneficiary.workflows.utils import DataUploadWorkflow
+from beneficiary.services import BeneficiaryImportService
 from social_protection.models import BenefitPlan
 
 logger = logging.getLogger(__name__)
@@ -103,7 +103,7 @@ DO $$
             and individual_individualdatasource."Json_ext" = new_entry."Json_ext";  -- match on Json_ext
 
 
-            with new_entry_2 as (INSERT INTO social_protection_beneficiary(
+            with new_entry_2 as (INSERT INTO beneficiary_beneficiary(
             "UUID", "isDeleted", "Json_ext", "DateCreated", "DateUpdated", version, "DateValidFrom", "DateValidTo", status, "benefit_plan_id", "individual_id", "UserCreatedUUID", "UserUpdatedUUID"
             )
             SELECT gen_random_uuid(), false, iids."Json_ext" - 'first_name' - 'last_name' - 'dob', NOW(), NOW(), 1, NOW(), NULL, 'POTENTIAL', benefitPlan, new_entry."UUID", userUUID, userUUID

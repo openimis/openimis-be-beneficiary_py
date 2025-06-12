@@ -2,7 +2,6 @@ import logging
 
 from core.service_signals import ServiceSignalBindType
 from core.signals import bind_service_signal
-from core.models import User
 from beneficiary.apps import BeneficiaryConfig
 from beneficiary.services import (
     BeneficiaryService,
@@ -16,9 +15,9 @@ from beneficiary.models import (
 from beneficiary.signals.on_validation_import_valid_items import on_task_complete_import_validated, \
     on_task_resolve
 
-from social_protection.signals.on_confirm_enrollment_of_individual import on_confirm_enrollment_of_individual
-from social_protection.signals.on_confirm_enrollment_of_group import on_confirm_enrollment_of_group
-from social_protection.signals.on_validation_import_valid_items import on_task_complete_import_validated, \
+from beneficiary.signals.on_confirm_enrollment_of_individual import on_confirm_enrollment_of_individual
+from beneficiary.signals.on_confirm_enrollment_of_group import on_confirm_enrollment_of_group
+from beneficiary.signals.on_validation_import_valid_items import on_task_complete_import_validated, \
     on_task_resolve
 
 from tasks_management.models import Task
@@ -29,11 +28,6 @@ logger = logging.getLogger(__name__)
 
 def bind_service_signals():
 
-    bind_service_signal(
-        'task_service.complete_task',
-        on_task_complete_service_handler(BenefitPlanService),
-        bind_type=ServiceSignalBindType.AFTER
-    )
     bind_service_signal(
         'task_service.complete_task',
         on_task_complete_service_handler(BeneficiaryService),
@@ -62,10 +56,5 @@ def bind_service_signals():
     bind_service_signal(
         'group_service.select_groups_to_benefit_plan',
         on_confirm_enrollment_of_group,
-        bind_type=ServiceSignalBindType.AFTER
-    )
-    bind_service_signal(
-        'task_service.complete_task',
-        on_task_close_benefit_plan,
         bind_type=ServiceSignalBindType.AFTER
     )

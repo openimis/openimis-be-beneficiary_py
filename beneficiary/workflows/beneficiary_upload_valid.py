@@ -1,8 +1,8 @@
 import logging
 
 from core.models import User
-from social_protection.workflows.utils import SqlProcedurePythonWorkflow
-from social_protection.services import BeneficiaryImportService
+from beneficiary.workflows.utils import SqlProcedurePythonWorkflow
+from beneficiary.services import BeneficiaryImportService
 from social_protection.models import BenefitPlan
 
 logger = logging.getLogger(__name__)
@@ -107,7 +107,7 @@ BEGIN
           AND individual_individualdatasource."Json_ext" = ne."Json_ext"
           AND validations ->> 'validation_errors' = '[]';
         
-        with new_entry_2 as (INSERT INTO social_protection_beneficiary(
+        with new_entry_2 as (INSERT INTO beneficiary_beneficiary(
         "UUID", "isDeleted", "Json_ext", "DateCreated", "DateUpdated", version, "DateValidFrom", "DateValidTo", status, "benefit_plan_id", "individual_id", "UserCreatedUUID", "UserUpdatedUUID"
         )
         SELECT gen_random_uuid(), false, iids."Json_ext" - 'first_name' - 'last_name' - 'dob', NOW(), NOW(), 1, NOW(), NULL, 'POTENTIAL', benefitPlan, new_entry."UUID", userUUID, userUUID
@@ -243,7 +243,7 @@ BEGIN
           AND validations ->> 'validation_errors' = '[]'
           AND (accepted IS NULL OR individual_individualdatasource."UUID" = ANY(accepted));
 
-        INSERT INTO social_protection_beneficiary(
+        INSERT INTO beneficiary_beneficiary(
         "UUID", "isDeleted", "Json_ext", "DateCreated", "DateUpdated", version, "DateValidFrom", "DateValidTo", status, "benefit_plan_id", "individual_id", "UserCreatedUUID", "UserUpdatedUUID"
         )
         SELECT gen_random_uuid(), false, iids."Json_ext" - 'first_name' - 'last_name' - 'dob', NOW(), NOW(), 1, NOW(), NULL, 'POTENTIAL', benefitPlan, new_entry."UUID", userUUID, userUUID
