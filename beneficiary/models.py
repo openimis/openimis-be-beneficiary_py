@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 
 from core import models as core_models
 from individual.models import Individual, Group, IndividualDataSourceUpload
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 
 
 class BeneficiaryStatus(models.TextChoices):

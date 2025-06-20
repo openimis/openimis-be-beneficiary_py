@@ -9,7 +9,7 @@ if 'opensearch_reports' in apps.app_configs and not is_unit_test_env:
     from django_opensearch_dsl import fields as opensearch_fields
     from django_opensearch_dsl.registries import registry
     from beneficiary.models import Beneficiary
-    from social_protection.models import BenefitPlan
+    from benefit_plan.models import BenefitPlan
     from individual.models import Individual
 
     @registry.register_document

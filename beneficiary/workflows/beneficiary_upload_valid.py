@@ -3,7 +3,7 @@ import logging
 from core.models import User
 from beneficiary.workflows.utils import SqlProcedurePythonWorkflow
 from beneficiary.services import BeneficiaryImportService
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 
 logger = logging.getLogger(__name__)
 

@@ -18,7 +18,7 @@ from django.db import (
 from core.models import User
 from individual.models import IndividualDataSource
 from beneficiary.apps import BeneficiaryConfig
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 from beneficiary.services import BeneficiaryImportService
 from beneficiary.utils import load_dataframe
 from workflow.exceptions import PythonWorkflowHandlerException
