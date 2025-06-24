@@ -14,6 +14,7 @@ DEFAULT_CONFIG = {
     "gql_check_group_beneficiary_crud": True,
     "enable_maker_checker_for_beneficiary_upload": True,
     "enable_maker_checker_for_beneficiary_update": True,
+    "validation_calculation_uuid": "4362f958-5894-435b-9bda-df6cadf88352",
     "validation_import_valid_items": "validation.import_valid_items",
     "validation_import_valid_items": "validation.import_valid_items",
     "validation_import_group_valid_items": "validation.import_group_valid_items",
@@ -65,6 +66,7 @@ class BeneficiaryConfig(AppConfig):
     validation_group_enrollment = None
     validation_import_group_valid_items = None
 
+    validation_calculation_uuid = None
     enable_maker_checker_for_beneficiary_upload = None
     enable_maker_checker_for_beneficiary_update = None
 
