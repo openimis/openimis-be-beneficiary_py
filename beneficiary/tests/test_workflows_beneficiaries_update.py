@@ -35,7 +35,7 @@ class ProcessUpdateBeneficiariesWorkflowTest(TestCase):
         super().setUpClass()
         # Patch validate_dataframe_headers as it is already tested separately
         cls.validate_headers_patcher = patch(
-            "social_protection.workflows.utils.BasePythonWorkflowExecutor.validate_dataframe_headers",
+            "beneficiary.workflows.utils.BasePythonWorkflowExecutor.validate_dataframe_headers",
             lambda self, is_update: None
         )
         cls.validate_headers_patcher.start()

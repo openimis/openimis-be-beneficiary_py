@@ -4,7 +4,7 @@ from django.test import TestCase
 
 from individual.models import Group
 
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 from beneficiary.models import GroupBeneficiary
 from beneficiary.services import GroupBeneficiaryService
 from beneficiary.tests.data import (

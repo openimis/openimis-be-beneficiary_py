@@ -5,7 +5,7 @@ from core.models.openimis_graphql_test_case import (
     BaseTestContext
 )
 from core.test_helpers import create_test_interactive_user
-from social_protection import schema as sp_schema
+from benefit_plan import schema as sp_schema
 from graphene import Schema
 from beneficiary.tests.test_helpers import (
     create_benefit_plan,

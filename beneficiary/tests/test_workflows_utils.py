@@ -8,7 +8,7 @@ from beneficiary.workflows.utils import (
 import pandas as pd
 import json
 import uuid
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 
 
 class TestBasePythonWorkflowExecutor(TestCase):

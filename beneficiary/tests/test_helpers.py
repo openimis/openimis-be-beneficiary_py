@@ -9,7 +9,7 @@ from individual.models import (
     Group,
     GroupIndividual
 )
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 from beneficiary.tests.data import (
     service_add_payload_valid_schema,
     service_beneficiary_add_payload,

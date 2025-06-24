@@ -49,7 +49,7 @@ DO $$
 
 
     -- Check if any entries have invalid Json_ext according to the schema
-    SELECT beneficiary_data_schema INTO json_schema FROM social_protection_benefitplan WHERE "UUID" = benefitPlan;
+    SELECT beneficiary_data_schema INTO json_schema FROM benefit_plan_benefitplan WHERE "UUID" = benefitPlan;
     SELECT ARRAY_AGG("UUID") INTO failing_entries_invalid_json
     FROM individual_individualdatasource
     WHERE upload_id=current_upload_id and individual_id is null and "isDeleted"=False AND NOT validate_json_schema(json_schema, "Json_ext");
@@ -158,7 +158,7 @@ DO $$
 
 
     -- Check if any entries have invalid Json_ext according to the schema
-    SELECT beneficiary_data_schema INTO json_schema FROM social_protection_benefitplan WHERE "UUID" = benefitPlan;
+    SELECT beneficiary_data_schema INTO json_schema FROM benefit_plan_benefitplan WHERE "UUID" = benefitPlan;
     SELECT ARRAY_AGG("UUID") INTO failing_entries_invalid_json
     FROM individual_individualdatasource
     WHERE upload_id=current_upload_id and individual_id is null and "isDeleted"=False AND NOT validate_json_schema(json_schema, "Json_ext");

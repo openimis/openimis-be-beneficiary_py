@@ -62,7 +62,7 @@ BEGIN
     -- existing code for finding failing_entries_first_name, failing_entries_last_name, failing_entries_dob
 
     -- Check if any entries have invalid Json_ext according to the schema
-    SELECT beneficiary_data_schema INTO json_schema FROM social_protection_benefitplan WHERE "UUID" = benefitPlan;
+    SELECT beneficiary_data_schema INTO json_schema FROM benefit_plan_benefitplan WHERE "UUID" = benefitPlan;
 
     SELECT ARRAY_AGG("UUID") AS "UUID", ARRAY_AGG("ordinal") AS "ORDINALS" INTO failing_entries_invalid_id
     FROM (

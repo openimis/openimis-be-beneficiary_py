@@ -8,7 +8,7 @@ from individual.models import (
     Group,
     GroupIndividual
 )
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 from beneficiary.models import (
     Beneficiary,
     BenefitPlanDataUploadRecords,
@@ -35,7 +35,7 @@ class ProcessImportBeneficiariesWorkflowTest(TestCase):
         super().setUpClass()
         # Patch validate_dataframe_headers as it is already tested separately
         cls.validate_headers_patcher = patch(
-            "social_protection.workflows.utils.BasePythonWorkflowExecutor.validate_dataframe_headers",
+            "beneficiary.workflows.utils.BasePythonWorkflowExecutor.validate_dataframe_headers",
             lambda self: None
         )
         cls.validate_headers_patcher.start()

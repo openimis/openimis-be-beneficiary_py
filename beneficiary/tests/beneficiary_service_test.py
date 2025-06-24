@@ -2,7 +2,7 @@ from django.test import TestCase
 from individual.models import Individual
 
 from beneficiary.models import Beneficiary
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 from beneficiary.services import BeneficiaryService
 from beneficiary.tests.data import (
     service_beneficiary_add_payload,

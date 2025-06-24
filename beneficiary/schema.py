@@ -26,7 +26,7 @@ from beneficiary.gql_queries import (
     BenefitPlanDataUploadQGLType,
 )
 from beneficiary.export_mixin import ExportableBeneficiaryQueryMixin
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 from beneficiary.models import (
     Beneficiary,
     GroupBeneficiary,

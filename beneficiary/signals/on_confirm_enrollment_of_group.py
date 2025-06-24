@@ -8,7 +8,7 @@ from individual.models import (
     GroupIndividual
 )
 from beneficiary.apps import BeneficiaryConfig
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 
 from beneficiary.models import (
     GroupBeneficiary,

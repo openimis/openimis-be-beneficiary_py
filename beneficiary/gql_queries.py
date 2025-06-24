@@ -10,8 +10,8 @@ from beneficiary.apps import BeneficiaryConfig
 from beneficiary.models import (
     Beneficiary, GroupBeneficiary, BenefitPlanDataUploadRecords
 )
-from social_protection.models import BenefitPlan
-from social_protection.gql_queries import BenefitPlanGQLType
+from benefit_plan.models import BenefitPlan
+from benefit_plan.gql_queries import BenefitPlanGQLType
 
 
 def _have_permissions(user, permission):

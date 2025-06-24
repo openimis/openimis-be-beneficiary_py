@@ -1,6 +1,6 @@
 from django.test import TestCase
 from beneficiary.models import BenefitPlanDataUploadRecords
-from social_protection.models import BenefitPlan
+from benefit_plan.models import BenefitPlan
 from individual.models import (
     IndividualDataSource,
     IndividualDataSourceUpload
